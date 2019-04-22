@@ -48,10 +48,11 @@ L.Shapefile = L.GeoJSON.extend({
     }
 
     promise.then(function(data) {
+      console.log('promise=>',data);
       self.addData(data);
       self.fire('data:loaded');
       self.worker.close();
-    }).catch(function(err) {
+    },function(err) {
       self.fire('data:error', err);
     })
     return this;
